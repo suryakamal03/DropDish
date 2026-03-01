@@ -20,6 +20,17 @@ const user = new mongoose.Schema({
   password:{
     type:String,
     required:true
+  },
+  followers:[
+    {type:mongoose.Schema.Types.ObjectId,ref:'User'}
+  ],
+  following:[
+    {type:mongoose.Schema.Types.ObjectId,ref:'User'}
+  ],
+    profilePicture:{
+    type:String,
+    default:""
   }
-},{timestamps:true});
+  },
+{timestamps:true});
 export const User = mongoose.model<IUser>('User',user);
