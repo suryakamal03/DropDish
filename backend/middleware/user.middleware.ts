@@ -9,8 +9,8 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     return res.status(401).json({ message: "No token, authorization denied" });
   }
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    (req as any).user = decoded;
+    const decoded = jwt.verify(token, JWT_SECRET) as { id: string };
+    req.userId = decoded.id;
     next();
   } catch (error) {
     res.status(401).json({ message: "Token is not valid" });

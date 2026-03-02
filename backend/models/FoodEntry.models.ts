@@ -48,4 +48,6 @@ const foodEntry = new mongoose.Schema({
     type:Date,
     default:Date.now()
   }
-})
+},{timestamps:true});
+
+export const FoodEntry = mongoose.model<IFoodEntry>('FoodEntry',foodEntry);
