@@ -58,3 +58,11 @@ export const LoginUser = async(req: Request, res: Response)=>{
     res.status(500).json({message:"Server error on logging in user",error});
   }
 }
+
+export const LogoutUser = async(req: Request, res: Response)=>{
+  try {
+    res.status(200).json({message:"User logged out successfully"});
+  } catch (error) {
+    res.status(500).json({message:"Server error on logging out user",error});
+  }
+}

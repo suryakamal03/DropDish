@@ -1,6 +1,8 @@
 import express,{Request,Response} from 'express';
 import mongoose from 'mongoose';
-import Router from './routes/user.routes';
+import auth from './routes/auth.routes';
+import user from './routes/user.routes';
+import food from './routes/FoodEntry.routes';
 import dotenv from 'dotenv';
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -15,7 +17,9 @@ const connectDB = async () =>{
     console.log("error in connecting MONGODB",error)
   }
 }
-app.use("/api/user",Router);
+app.use("/api/auth",auth);
+app.use("/api/user",user);
+app.use("/api/food",food);
 app.listen(PORT,()=>{
   console.log("The server is running",PORT);
   connectDB();
